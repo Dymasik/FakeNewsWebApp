@@ -3,4 +3,5 @@
 2. Activate venv with `venv/bin/activate`
 3. Run `pip install -r requirements.txt`
 4. Copy `model.h5` file into `/model` directory (do not commit h5 model file because it is too big)
-5. `python -m flask run`
+5. Copy `tokenizer.json` file into `/model` directory (do not commit json dataset file because it is too big)
+6. `python -m flask run`

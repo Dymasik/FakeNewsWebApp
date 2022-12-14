@@ -1,17 +1,13 @@
-import tensorflow as tf
-from keras.preprocessing.text import Tokenizer
+from typing import Any
 from keras_preprocessing.sequence import pad_sequences
-from os import path
+from keras.preprocessing.text import Tokenizer
 
 
-MODEL_PATH = path.join(path.dirname(path.abspath(__file__)), "model.h5")
 MAX_LEN = 64
-MODEL = tf.keras.models.load_model(MODEL_PATH)
 
 
-def predict(text: str) -> float:
-    tokenizer = Tokenizer()
+def predict(model: Any, tokenizer: Tokenizer, text: str) -> float:
     sequences = tokenizer.texts_to_sequences([text])
     pad = pad_sequences(sequences, maxlen=MAX_LEN)
-    prediction = MODEL.predict(pad)
+    prediction = model.predict(pad)
     return prediction[0][0]
